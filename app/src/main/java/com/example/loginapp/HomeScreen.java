@@ -1,8 +1,8 @@
 package com.example.loginapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 public class HomeScreen extends AppCompatActivity {
@@ -20,6 +20,7 @@ public class HomeScreen extends AppCompatActivity {
         final String username = email_passed.substring(0,email_passed.indexOf("@"));
 
         welcome.setText("Welcome to the ZOO, " +username+ "!");
+
 
     }
 }

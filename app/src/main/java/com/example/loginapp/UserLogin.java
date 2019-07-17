@@ -20,6 +20,10 @@ public class UserLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
 
@@ -35,7 +39,7 @@ public class UserLogin extends AppCompatActivity {
         final TextView error = findViewById(R.id.textview_error);
 
         final String PREFS_NAME = "PrefsFile";
-        final SharedPreferences mPrefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);;
+        final SharedPreferences mPrefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final CheckBox keepSigned = findViewById(R.id.checkBox_sign);
 
 
@@ -94,21 +98,20 @@ public class UserLogin extends AppCompatActivity {
 
                     email.getText().clear();
                     pass.getText().clear();
-
-
                 }
                 else
                 {
                     //error checks
                     if(email.getText().toString().equals(""))
                     {
-                        email.setHintTextColor(Color.RED);
-                        email.setHint("Input an e-mail");
+                        email.setError("Input an e-mail");
+                        email.requestFocus();
                     }
                     if(pass.getText().toString().equals(""))
                     {
-                        pass.setHintTextColor(Color.RED);
-                        pass.setHint("Input a password");
+                        pass.setError("Input a password");
+                        pass.requestFocus();
+
                     }
 
                     //if the email or password is/are invalid
@@ -120,7 +123,7 @@ public class UserLogin extends AppCompatActivity {
         });
 
 
-        SharedPreferences sp = getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+       SharedPreferences sp = getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
         if(sp.contains("prefs_name")){
             String u = sp.getString("prefs_name", "not found");
             email.setText(u.toString());
@@ -133,12 +136,12 @@ public class UserLogin extends AppCompatActivity {
             Boolean b = sp.getBoolean("prefs_check", false);
             keepSigned.setChecked(b);
         }
-
         if(sp.contains("prefs_check"))
             {
         Intent loginIntent = new Intent(getApplicationContext(), HomeScreen.class);
         loginIntent.putExtra("KEY",x1);
         startActivity(loginIntent);
+
             }
 
     }

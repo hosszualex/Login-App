@@ -19,7 +19,7 @@ public class HomeScreen extends AppCompatActivity {
 
         final String username = email_passed.substring(0,email_passed.indexOf("@"));
 
-        welcome.setText("Welcome to the ZOO, " + username + "!");
+        welcome.setText("Welcome to the ZOO, " +username+ "!");
 
     }
 }
